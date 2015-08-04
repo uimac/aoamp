@@ -261,24 +261,24 @@ render(unsigned char *img, int w, int h, int nsubsamples)
 	float *fimg = (float *)malloc(sizeof(float) * w * h * 3);
 	memset((void *)fimg, 0, sizeof(float) * w * h * 3);
 
-	// fimg‚ğGPU‚É‘—‚é.
+	// fimgã‚’GPUã«é€ã‚‹.
 	array_view<float, 1> fimg_view(w * h * 3, fimg);
 	fimg_view.discard_data();
 
-	// sphere‚ğGPU‚É‘—‚é.
+	// sphereã‚’GPUã«é€ã‚‹.
 	array_view<Sphere, 1> sphere_view(3, spheres);
 
-	// plane‚ğGPU‚É‘—‚é
+	// planeã‚’GPUã«é€ã‚‹
 	array_view<Plane, 1> plane_view(1, &plane);
 
-	// index‚ğGPU‚É‘—‚é.
+	// indexã‚’GPUã«é€ã‚‹.
 	std::vector<int> index_data(w * h);
 	for (int i = 0, wh = w * h; i < wh; ++i) {
 		index_data[i] = i;
 	}
 	array_view<int, 1> index_view(w * h, index_data);
 
-	// —”.
+	// ä¹±æ•°.
 	tinymt_collection<1> myrand(extent<1>(w * h), rand());
 
 	parallel_for_each(

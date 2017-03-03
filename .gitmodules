@@ -1,0 +1,3 @@
+[submodule "sample"]
+	path = sample
+	url = git://192.168.45.112/sample.git
